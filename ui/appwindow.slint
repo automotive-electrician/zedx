@@ -1,0 +1,29 @@
+import { Button, VerticalBox } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+    title: "ali";
+    min-width: 400px;
+    min-height: 300px;
+    background: #000;
+
+    in-out property <int> counter: 0;
+
+    VerticalBox {
+        alignment: center;
+        spacing: 20px;
+
+        Text {
+            text: "مقدار دریافتی: \{root.counter}";
+            color: #ffffff;
+            font-size: 22px;
+            horizontal-alignment: center;
+        }
+
+        Button {
+            text: "افزایش مقدار";
+            clicked => {
+                root.counter += 1;
+            }
+        }
+    }
+}
