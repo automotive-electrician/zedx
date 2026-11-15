@@ -24,7 +24,6 @@ impl<const P: u8, const START_PID: u8, const END_PID: u8> Pid
 }
 
 impl<const P: u8, const START_PID: u8, const END_PID: u8> SupportedPids<P, START_PID, END_PID> {
-    /// بررسی پشتیبانی شدن یک PID در محدوده تعیین شده
     pub fn is_supported(mask: u32, target_pid: u8) -> bool {
         if target_pid < START_PID || target_pid > END_PID {
             return false;
