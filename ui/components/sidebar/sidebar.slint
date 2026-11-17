@@ -1,0 +1,63 @@
+import { Theme } from "../../theme.slint";
+import { SidebarItem } from "items.slint";
+import { SidebarFooter } from "footer.slint";
+export component Sidebar {
+    width: 60px;
+
+    Rectangle {
+        background: Theme.bg-secondary;
+        border-width: 1.5px;
+        border-color: Theme.accent;
+        border-radius: Theme.radius-sm;
+
+        VerticalLayout {
+            alignment: start;
+            spacing: 22px;
+            padding-top: 14px;
+            SidebarItem {
+                icon: @image-url("../../assets/svg/sidebar/home.svg");
+                label: "خانه";
+            }
+
+            SidebarItem {
+                icon: @image-url("../../assets/svg/sidebar/parameters.svg");
+                label: "داده های لحظه ای";
+            }
+
+            SidebarItem {
+                icon: @image-url("../../assets/svg/sidebar/chart.svg");
+                label: "نمودار لحظه ای";
+            }
+
+            SidebarItem {
+                icon: @image-url("../../assets/svg/sidebar/error.svg");
+                label: "عیب یابی";
+            }
+
+            SidebarItem {
+                icon: @image-url("../../assets/svg/sidebar/book.svg");
+                label: "کتابچه خودرو";
+            }
+        }
+
+        VerticalLayout {
+            alignment: end;
+            spacing: 22px;
+            padding-bottom: 14px;
+            SidebarFooter {
+                icon: @image-url("../../assets/svg/sidebar/about.svg");
+                label: "درباره ما";
+            }
+
+            SidebarFooter {
+                icon: @image-url("../../assets/svg/sidebar/setting.svg");
+                label: "تنظیمات";
+            }
+
+            SidebarFooter {
+                icon: @image-url("../../assets/svg/sidebar/login.svg");
+                label: "ورود/عضویت";
+            }
+        }
+    }
+}
