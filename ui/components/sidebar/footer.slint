@@ -1,0 +1,45 @@
+import { Theme } from "../../theme.slint";
+export component SidebarFooter {
+    in property <image> icon;
+    in property <string> label;
+    callback clicked();
+
+    Rectangle {
+        width: 44px;
+        height: 44px;
+        border-width: 1.5px;
+        border-color: Theme.accent;
+        border-radius: ta.has-hover ? Theme.radius : Theme.radius-sm;
+        animate border-radius {
+            duration: 200ms;
+            easing: ease-in-out;
+        }
+        background: Theme.accent-soft;
+        Image {
+            source: root.icon;
+            colorize: Theme.text-primary;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    ta := TouchArea {
+        mouse-cursor: pointer;
+        clicked => { root.clicked() }
+    }
+
+    if ta.has-hover: Rectangle {
+        x: -100px;
+        y: 0px;
+        height: 32px;
+        width: 105px;
+        border-width: 1.5px;
+        border-color: Theme.accent;
+        border-radius: Theme.radius-sm;
+        background: Theme.bg-hover;
+        Text {
+            text: root.label;
+            font-size: 13px;
+        }
+    }
+}
