@@ -1,29 +1,20 @@
-import { Button, VerticalBox } from "std-widgets.slint";
+import { Theme } from "theme.slint";
+import { AppState, Page } from "state.slint";
+import { Sidebar } from "components/sidebar/sidebar.slint";
 
+
+export { AppState, Page }
 export component MainWindow inherits Window {
-    title: "ali";
-    min-width: 400px;
-    min-height: 300px;
-    background: #000;
-
-    in-out property <int> counter: 0;
-
-    VerticalBox {
-        alignment: center;
-        spacing: 20px;
-
-        Text {
-            text: "مقدار دریافتی: \{root.counter}";
-            color: #ffffff;
-            font-size: 22px;
-            horizontal-alignment: center;
-        }
-
-        Button {
-            text: "افزایش مقدار";
-            clicked => {
-                root.counter += 1;
-            }
+    title: "ZedX";
+    min-width: 900px;
+    min-height: 600px;
+    background: Theme.bg-primary;
+    default-font-family: Theme.vazir;
+    Rectangle {
+        HorizontalLayout {
+            padding: 8px;
+            alignment: end;
+            Sidebar { }
         }
     }
 }
