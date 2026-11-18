@@ -1,20 +1,49 @@
 import { Theme } from "theme.slint";
 import { AppState, Page } from "state.slint";
 import { Sidebar } from "components/sidebar/sidebar.slint";
+import { Navbar } from "components/navbar/navbar.slint";
+
+// import Pages
+import { Home } from "pages/home.slint";
+import { Parameters } from "pages/parameters.slint";
+import { Dashboard } from "pages/dashboard.slint";
+import { Diagnostics } from "pages/diagnostics.slint";
+import { Book } from "pages/book.slint";
+import { Ai } from "pages/ai.slint";
+import { AboutUs } from "pages/about_us.slint";
+import { Setting } from "pages/setting.slint";
+import { VerticalBox } from "std-widgets.slint";
 
 
 export { AppState, Page }
 export component MainWindow inherits Window {
     title: "ZedX";
-    min-width: 900px;
-    min-height: 600px;
+    // min-width: 1200px;
+    // min-height: 800px;
     background: Theme.bg-primary;
     default-font-family: Theme.vazir;
-    Rectangle {
-        HorizontalLayout {
-            padding: 8px;
-            alignment: end;
-            Sidebar { }
+
+    HorizontalLayout {
+        VerticalLayout {
+            Navbar { }
+
+            VerticalBox {
+                Rectangle {
+                    // Sidebar items
+                    if AppState.page == Page.home: Home { }
+                    if AppState.page == Page.parameters: Parameters { }
+                    if AppState.page == Page.dashboard: Dashboard { }
+                    if AppState.page == Page.diagnostics: Diagnostics { }
+                    if AppState.page == Page.book: Book { }
+                    if AppState.page == Page.ai: Ai { }
+
+                    // Sidebar Footer
+                    if AppState.page == Page.about_us: AboutUs { }
+                    if AppState.page == Page.setting: Setting { }
+                }
+            }
         }
+
+        Sidebar { }
     }
 }

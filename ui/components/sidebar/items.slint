@@ -6,37 +6,49 @@ export component SidebarItem {
     callback clicked();
 
     Rectangle {
-        width: 44px;
-        height: 44px;
-        border-width: 1.5px;
-        border-color: Theme.accent;
-        border-radius: Theme.radius-sm;
-        background: root.active ? Theme.accent : ta.has-hover ? Theme.bg-hover : Theme.border;
+        width: 37px;
+        height: 37px;
+        border-radius: Theme.radius;
         Image {
             source: root.icon;
-            colorize: Theme.text-secondary;
-            width: 30px;
-            height: 30px;
+            colorize: root.active ? Theme.text-primary : Theme.text-secondary;
+            width: 26px;
+            height: 26px;
         }
     }
 
+    // Popup label for sidebar items
     ta := TouchArea {
         mouse-cursor: pointer;
         clicked => { root.clicked() }
     }
 
-    if ta.has-hover: Rectangle {
-        x: -95px;
+    Rectangle {
+        x: ta.has-hover ? -110px : -95px;
         y: 0px;
-        height: 32px;
-        width: 100px;
+        height: 26px;
+        width: 105px;
+        opacity: ta.has-hover ? 1 : 0;
         border-width: 1.5px;
-        border-color: Theme.accent;
+        border-color: Theme.border;
         border-radius: Theme.radius-sm;
-        background: Theme.bg-hover;
+        background: Theme.bg-secondary;
+
+        animate opacity {
+            duration: 200ms;
+            easing: ease-in-out;
+        }
+
+        animate x {
+            duration: 200ms;
+            easing: ease-out;
+        }
+
         Text {
             text: root.label;
-            font-size: 13px;
+            font-size: 12px;
+            font-weight: 500;
+            color: Theme.text-primary;
         }
     }
 }

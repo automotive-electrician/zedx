@@ -16,37 +16,35 @@ import "./assets/fonts/Vazir/Vazirmatn-FD-NL-ExtraBold.ttf";
 import "./assets/fonts/Vazir/Vazirmatn-FD-NL-Bold.ttf";
 import "./assets/fonts/Vazir/Vazirmatn-FD-NL-Black.ttf";
 
+// Agbalumo font
+import "./assets/fonts/Agbalumo/Agbalumo.ttf";
+
 export global Theme {
     // Fonts
     out property <string> vazir: "Vazirmatn FD NL";
     out property <string> lato: "Lato";
+    out property <string> agbalumo: "Agbalumo";
 
-    // رنگ‌های پس‌زمینه (لایه به لایه از تیره به روشن برای ایجاد عمق)
-    out property <color> bg-primary: #0b0d11;       // پس‌زمینه اصلی صفحات (بسیار تیره و عمیق)
-    out property <color> bg-secondary: #11141b;     // پس‌زمینه سایدبار و پنل‌های کناری
-    out property <color> bg-card: #161a23;          // پس‌زمینه کارت‌های پارامتر و جداول
-    out property <color> bg-hover: #1e2330;         // حالت هاور (Hover) روی آیتم‌ها و دکمه‌ها
+    out property <color> bg-primary: #242424;
+    out property <color> bg-secondary: #1a1a1a;
+    out property <color> bg-card: #1a1a1d;
+    out property <color> bg-hover: #242428;
 
-    // خطوط جداکننده و حاشیه‌ها (خیلی ظریف برای مرزبندی کارت‌ها)
-    out property <color> border: #232836;
+    out property <color> border: #353535;
     out property <color> border-focus: #2f3649;
 
-    // سلسله‌مراتب رنگ متن
-    out property <color> text-primary: #f1f5f9;     // سفید یخی برای تیترها و اعداد اصلی
-    out property <color> text-secondary: #94a3b8;   // خاکستری روشن برای لیبل‌ها و توضیحات
-    out property <color> text-muted: #525d73;       // خاکستری تیره برای اطلاعات غیرفعال و واحدها
+    out property <color> text-primary: #e1e1e1;
+    out property <color> text-secondary: #9b9b9b;
+    out property <color> text-muted: #525d73;
 
-    // رنگ اصلی برند (حفظ سبز زمردی شما با طیف‌های مکمل)
-    out property <color> accent: #00ab80;           // رنگ اصلی دکمه‌ها، آیکون فعال و نمودار
-    out property <color> accent-hover: #00c493;     // حالت هاور روی دکمه اصلی
-    out property <color> accent-soft: #00ab801f;    // پس‌زمینه شفاف (۱۲٪) برای آیتم فعال در سایدبار
+    out property <color> accent: #42b883;
+    out property <color> accent-hover: #00c493;
+    out property <color> accent-soft: #00ab801f;
 
-    // رنگ‌های وضعیت (حیاتی برای ابزار دیاگ خودرو)
-    out property <color> status-ok: #10b981;        // طبیعی / متصل
-    out property <color> status-warning: #f59e0b;   // هشدار / احتیاط
-    out property <color> status-danger: #ef4444;    // خطای ECU / قطع اتصال
+    out property <color> status-ok: #10b981;
+    out property <color> status-warning: #f59e0b;
+    out property <color> status-danger: #ef4444;
 
-    // ابعاد و انحناها
-    out property <length> radius: 12px;             // کمی جمع‌وجورتر و مهندسی‌تر از 15px
-    out property <length> radius-sm: 8px;           // برای دکمه‌ها و آیتم‌های داخل سایدبار
+    out property <length> radius: 12px;
+    out property <length> radius-sm: 8px;
 }

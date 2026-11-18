@@ -1,0 +1,36 @@
+import { Theme } from "../../theme.slint";
+export component Navbar {
+    height: 50px;
+    Rectangle {
+        background: Theme.bg-secondary;
+        HorizontalLayout {
+            alignment: start;
+            padding-left: 14px;
+
+            Text {
+                text: "Zed";
+                vertical-alignment: center;
+                font-family: Theme.agbalumo;
+                font-size: 25px;
+                font-weight: 900;
+                color: Theme.text-primary;
+            }
+
+            Text {
+                text: "X";
+                vertical-alignment: center;
+                font-family: Theme.agbalumo;
+                font-size: 25px;
+                font-weight: 900;
+                color: Theme.accent;
+            }
+        }
+    }
+
+    // Navbar border line
+    Rectangle {
+        y: 50px - 1.5px;
+        height: 1.5px;
+        background: Theme.border;
+    }
+}

@@ -2,11 +2,12 @@ import { Theme } from "../../theme.slint";
 export component SidebarFooter {
     in property <image> icon;
     in property <string> label;
+    in property <bool> active;
     callback clicked();
 
     Rectangle {
-        width: 44px;
-        height: 44px;
+        width: 37px;
+        height: 37px;
         border-width: 1.5px;
         border-color: Theme.accent;
         border-radius: ta.has-hover ? Theme.radius : Theme.radius-sm;
@@ -14,32 +15,46 @@ export component SidebarFooter {
             duration: 200ms;
             easing: ease-in-out;
         }
-        background: Theme.accent-soft;
+        background: Theme.bg-secondary;
         Image {
             source: root.icon;
             colorize: Theme.text-primary;
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
         }
     }
 
+    // Popup label for sidebar footer items
     ta := TouchArea {
         mouse-cursor: pointer;
         clicked => { root.clicked() }
     }
 
-    if ta.has-hover: Rectangle {
-        x: -100px;
+    Rectangle {
+        x: ta.has-hover ? -110px : -95px;
         y: 0px;
-        height: 32px;
+        height: 26px;
         width: 105px;
+        opacity: ta.has-hover ? 1 : 0;
         border-width: 1.5px;
-        border-color: Theme.accent;
+        border-color: Theme.border;
         border-radius: Theme.radius-sm;
-        background: Theme.bg-hover;
+        background: Theme.bg-secondary;
+
+        animate opacity {
+            duration: 200ms;
+            easing: ease-in-out;
+        }
+
+        animate x {
+            duration: 200ms;
+            easing: ease-out;
+        }
+
         Text {
             text: root.label;
-            font-size: 13px;
+            font-size: 12px;
+            font-weight: 500;
         }
     }
 }
