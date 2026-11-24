@@ -33,10 +33,9 @@ impl<const P: u8, const START_PID: u8, const END_PID: u8> SupportedPids<P, START
     }
 }
 
-// تعریف نام‌های مستعار برای تمام بازه‌های استاندارد OBD-II
-// pub type SupportedPid01to20 = SupportedPids<0x00, 0x01, 0x20>;
-// pub type SupportedPid21to40 = SupportedPids<0x20, 0x21, 0x40>;
-// pub type SupportedPid41to60 = SupportedPids<0x40, 0x41, 0x60>;
-// pub type SupportedPid61to80 = SupportedPids<0x60, 0x61, 0x80>;
-// pub type SupportedPid81toA0 = SupportedPids<0x80, 0x81, 0xA0>;
-// pub type SupportedPidA1toC0 = SupportedPids<0xA0, 0xA1, 0xC0>;
+pub type SupportedPid01to20 = SupportedPids<0x00, 0x01, 0x20>;
+pub type SupportedPid21to40 = SupportedPids<0x20, 0x21, 0x40>;
+pub type SupportedPid41to60 = SupportedPids<0x40, 0x41, 0x60>;
+pub type SupportedPid61to80 = SupportedPids<0x60, 0x61, 0x80>;
+pub type SupportedPid81toA0 = SupportedPids<0x80, 0x81, 0xA0>;
+pub type SupportedPidA1toC0 = SupportedPids<0xA0, 0xA1, 0xC0>;

@@ -1,4 +1,13 @@
+use crate::{
+    consts::mode01::MODE_01,
+    pids::mode01::{pid_01::MonitorStatus, pid_03::FuelSystemStatusValue},
+};
+
+pub mod pid_01;
+pub mod pid_03;
 pub mod pid_04;
+pub mod pid_05;
+pub mod pid_06;
 pub mod pid_0c;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -8,6 +17,8 @@ pub enum PidValue {
     F32(f32),
     I16(i16),
     U32(u32),
+    MonitorStatus(MonitorStatus),
+    FuelSystemStatus(FuelSystemStatusValue),
 }
 
 impl From<u8> for PidValue {
@@ -40,6 +51,18 @@ impl From<u32> for PidValue {
     }
 }
 
+impl From<MonitorStatus> for PidValue {
+    fn from(v: MonitorStatus) -> Self {
+        Self::MonitorStatus(v)
+    }
+}
+
+impl From<FuelSystemStatusValue> for PidValue {
+    fn from(v: FuelSystemStatusValue) -> Self {
+        Self::FuelSystemStatus(v)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum PidError {
     TooShort,
@@ -51,7 +74,7 @@ pub enum PidError {
 }
 
 pub trait Pid {
-    const MODE: u8;
+    const MODE: u8 = MODE_01;
     const PID: u8;
     const NAME: &'static str;
     const UNIT: Option<&'static str>;

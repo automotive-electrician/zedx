@@ -13,7 +13,7 @@ impl Pid for EngineSpeed {
     const UNIT: Option<&'static str> = RPM;
 
     type Value = f32;
-    fn decode(data: &[u8]) -> Result<Self::Value, PidError> {
+    fn decode(data: &[u8]) -> Result<f32, PidError> {
         let a = data.first().copied().ok_or(PidError::TooShort)?;
         let b = data.get(1).copied().ok_or(PidError::TooShort)?;
         Ok(f32::from(u16::from_be_bytes([a, b])) * 0.25)
