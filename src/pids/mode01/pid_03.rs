@@ -32,12 +32,19 @@ impl From<u8> for FuelSystemState {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct FuelSystemStatusValue {
+    pub bank1: FuelSystemState,
+    pub bank2: FuelSystemState,
+}
+
 impl Pid for FuelSystemStatus {
     const PID: u8 = PID_03;
     const NAME: &'static str = PID_03_NAME;
     const UNIT: Option<&'static str> = None;
 
     type Value = FuelSystemStatusValue;
+
     fn decode(data: &[u8]) -> Result<Self::Value, PidError> {
         let a = *data.first().ok_or(PidError::TooShort)?;
         let b = *data.get(1).ok_or(PidError::TooShort)?;

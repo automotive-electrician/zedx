@@ -12,8 +12,8 @@ impl Pid for ShortTermFuelTrimBank1 {
     const UNIT: Option<&'static str> = PERCENTAGE;
 
     type Value = f32;
-    fn decode(data: &[u8]) -> Result<Self::Value, PidError> {
+    fn decode(data: &[u8]) -> Result<f32, PidError> {
         let a = *data.first().ok_or(PidError::TooShort)?;
-        Ok((f32::from(1) * 0.78125) - 100.00)
+        Ok((f32::from(a) * 0.78125) - 100.00)
     }
 }

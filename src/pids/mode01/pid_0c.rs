@@ -7,7 +7,6 @@ use crate::{
 
 pub struct EngineSpeed;
 impl Pid for EngineSpeed {
-    const MODE: u8 = MODE_01;
     const PID: u8 = PID_0C;
     const NAME: &'static str = PID_0C_NAME;
     const UNIT: Option<&'static str> = RPM;

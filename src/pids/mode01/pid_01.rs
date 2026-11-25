@@ -8,7 +8,7 @@ use crate::{
 pub struct MonitorStatusSinceDTCsCleared;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct MonitorStatus {
+pub struct MonitorStatusValue {
     pub mil_on: bool,
     pub dtc_count: u8,
     pub is_diesel: bool,
@@ -20,9 +20,8 @@ pub struct MonitorStatus {
     pub misfire_incomplete: bool,
     pub fuel_system_incomplete: bool,
     pub comprehensive_incomplete: bool,
-
-    pub c: u8,
-    pub d: u8,
+    // pub c: u8,
+    // pub d: u8,
 }
 
 impl Pid for MonitorStatusSinceDTCsCleared {
@@ -31,14 +30,14 @@ impl Pid for MonitorStatusSinceDTCsCleared {
     const NAME: &'static str = PID_01_NAME;
     const UNIT: Option<&'static str> = None;
 
-    type Value = MonitorStatus;
-    fn decode(data: &[u8]) -> Result<MonitorStatus, PidError> {
+    type Value = MonitorStatusValue;
+    fn decode(data: &[u8]) -> Result<MonitorStatusValue, PidError> {
         let a = *data.first().ok_or(PidError::TooShort)?;
         let b = *data.get(1).ok_or(PidError::TooShort)?;
         let b = *data.get(2).ok_or(PidError::TooShort)?;
         let b = *data.get(3).ok_or(PidError::TooShort)?;
 
-        Ok(MonitorStatus {
+        Ok(MonitorStatusValue {
             mil_on: a & 0x80 != 0,
             dtc_count: a & 0x7F,
             is_diesel: b & 0x08 != 0,
@@ -48,8 +47,8 @@ impl Pid for MonitorStatusSinceDTCsCleared {
             misfire_incomplete: b & 0x10 != 0,
             fuel_system_incomplete: b & 0x20 != 0,
             comprehensive_incomplete: b & 0x40 != 0,
-            c,
-            d,
+            // c,
+            // d,
         })
     }
 }
