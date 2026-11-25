@@ -60,11 +60,13 @@ impl From<MonitorStatusValue> for PidValue {
         Self::MonitorStatus(v)
     }
 }
+
 impl From<FuelSystemStatusValue> for PidValue {
     fn from(v: FuelSystemStatusValue) -> Self {
         Self::FuelSystemStatus(v)
     }
 }
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum PidError {
     TooShort,
@@ -100,7 +102,7 @@ pub trait Pid {
             return Err(PidError::BadLength);
         }
 
-        Ok(&raw_frame[1..1 + len])
+        Ok(&raw_frame[1..=len])
     }
 
     fn validate_response<'a>(payload: &'a [u8]) -> Result<&'a [u8], PidError> {
